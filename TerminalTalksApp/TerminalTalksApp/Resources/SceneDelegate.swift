@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
+    var handle: AuthStateDidChangeListenerHandle?
     var window: UIWindow?
 
 
@@ -17,7 +21,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-    }
+        
+        
+//        handle = Auth.auth().addStateDidChangeListener{ auth, user in
+//            if Auth.auth().currentUser != nil {
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let navigation = storyboard.instantiateViewController(withIdentifier: "CreateProfile")
+//                self.window?.rootViewController = navigation
+                
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+//    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
@@ -48,5 +69,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
-}
+//}
 
