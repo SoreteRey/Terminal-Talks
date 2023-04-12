@@ -7,13 +7,11 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class CreateProfileViewController: UIViewController {
     
-    private let database = Database.database().reference()
-   
     // MARK: - Outlets
-    
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
@@ -30,19 +28,17 @@ class CreateProfileViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel = CreateProfileViewModel(delegate: self)
-        setUpImageView()
+//        setUpImageView()
         updateUI()
     }
     
-    
-    
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
-        guard let username = usernameTextField.text,
-              let age = ageTextField.text,
-              let aboutYou = aboutYouTextField.text,
-              let language = languageTextField.text,
-              let nationality = nationalityTextField.text,
+        guard let username = usernameTextField.text, username != "",
+              let age = ageTextField.text, age != "",
+              let aboutYou = aboutYouTextField.text, aboutYou != "",
+              let language = languageTextField.text, language != "",
+              let nationality = nationalityTextField.text, nationality != "",
               let image = profileImageView.image else { return }
         
         viewModel.createProfile(username: username, age: age, aboutYou: aboutYou, language: language, nationality: nationality, image: image)
@@ -60,25 +56,26 @@ class CreateProfileViewController: UIViewController {
         nationalityTextField.text = profile.profileNationality
 
         viewModel.getImage { image in
-            self.profileImageView.image = image
+            self.profileImageView?.image = image
         }
     }
     
-    func setUpImageView() {
-        profileImageView.contentMode = .scaleAspectFit
-        profileImageView.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
-        
-    }
-    // make segue to transfer information from one view to another
-    
-    @objc func imageViewTapped() {
-        let picker = UIImagePickerController()
-        picker.sourceType = .photoLibrary
-        picker.delegate = self
-        picker.allowsEditing = true
-        present(picker, animated: true)
-    }
+//    func setUpImageView() {
+//        profileImageView.contentMode = .scaleAspectFit
+//        profileImageView.isUserInteractionEnabled = true
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
+//        profileImageView.addGestureRecognizer(tapGesture)
+//
+//    }
+//     make segue to transfer information from one view to another
+//
+//    @objc func imageViewTapped() {
+//        let picker = UIImagePickerController()
+//        picker.sourceType = .photoLibrary
+//        picker.delegate = self
+//        picker.allowsEditing = true
+//        present(picker, animated: true)
+//    }
 }
 
 // MARK: - Extension

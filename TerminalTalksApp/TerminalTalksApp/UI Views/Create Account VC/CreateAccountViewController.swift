@@ -33,7 +33,17 @@ class CreateAccountViewController: UIViewController {
               let confirmPassword = confirmPasswordTextField.text else { return }
         // present an error for not having any input from the user
         
-        viewModel.createAccount(email: email, password: password, confirmPassword: confirmPassword)
+        viewModel.createAccount(email: email, password: password, confirmPassword: confirmPassword) { success, error in
+            if success == true {
+                //go to another view
+            } else {
+                let alert = UIAlertController(title: "Error Creating Account", message: error?.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                    print("User says Okay")
+                }))
+                self.present(alert, animated: true)
+            }
+        }
     }
 }
 // MARK: - Option to pop to another view from creating account

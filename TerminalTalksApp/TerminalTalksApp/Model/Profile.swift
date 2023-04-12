@@ -27,7 +27,7 @@ class Profile {
     var profileLanguage: String
     var profileNationality: String
     var uuid: String
-    var imageURL: String
+    var imageURL: String?
     //need to make image optional
     // should tell the user that they need to fill in the options
     
@@ -77,5 +77,3 @@ extension Profile: Equatable {
         return lhs.uuid == rhs.uuid
     }
 }
-    
-

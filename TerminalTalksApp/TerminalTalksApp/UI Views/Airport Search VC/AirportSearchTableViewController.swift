@@ -18,52 +18,65 @@ class AirportSearchTableViewController: UITableViewController {
         super.viewDidLoad()
 
         searchBar.delegate = self
+        jsonToObjectC()
+        
     }
+    // MARK: - Properties
+    var airports: [Airport]?
+    var filteredAirports: [Airport]?
     
     // MARK: - Functions
-    func fetchingInformation(searchTerm: String) {
+    func fetchingInformation(searchTerm: String) { //O(n), where n is the length of the sequence.
+        let filtered = airports?.filter { airport in
+            airport.name.lowercased().contains(searchTerm.lowercased()) || airport.city.lowercased().contains(searchTerm.lowercased())
+        }
+        self.filteredAirports = filtered
+//        print(filtered)
+    }
+       
+    func jsonToObjectC() {
         guard let path = Bundle.main.path(forResource: "AirportsAPI", ofType: "json") else { return }
         
         let url = URL(fileURLWithPath: path)
         
         do {
             let data = try Data(contentsOf: url)
-            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            let airports = try JSONDecoder().decode([Airport].self, from: data)
+            self.airports = airports
             
-            guard let array = json as? [Any] else { return }
-            for airport in array {
-                guard let airportDict = airport as? [String : Any] else { return }
-                guard let airportName = airportDict["name"] as? String else { return }
-                guard let airportCountry = airportDict["country"] as? String else { return }
-            }
         } catch {
             print(error.localizedDescription)
         }
     }
     
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        return filteredAirports?.count ?? 0
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "airportCell", for: indexPath)
-
+        guard let airport = filteredAirports?[indexPath.row] else { return UITableViewCell() }
+        
+        var config = cell.defaultContentConfiguration()
+        config.text = airport.name
+        config.secondaryText = airport.city
+        cell.contentConfiguration = config
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
 // MARK: - Extension
 extension AirportSearchTableViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchTerm = searchBar.text, !searchTerm.isEmpty else { return }
         
         fetchingInformation(searchTerm: searchTerm)
+        self.tableView.reloadData()
     }
 }
-// tell the information what to do and present it to the cell
+
 
