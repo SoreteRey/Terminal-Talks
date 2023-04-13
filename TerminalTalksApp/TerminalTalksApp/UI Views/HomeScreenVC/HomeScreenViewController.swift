@@ -42,6 +42,11 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     }
 
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.setNavigationBarHidden(true, animated: animated)
+	}
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
