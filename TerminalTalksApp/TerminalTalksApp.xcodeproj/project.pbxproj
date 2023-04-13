@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		933DCB2929E7695100BB5768 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933DCB2829E7695100BB5768 /* CameraViewController.swift */; };
+		933DCB2B29E8483300BB5768 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933DCB2A29E8483300BB5768 /* MainScreenViewController.swift */; };
 		93451C6F29E1DDE600A389DA /* AirportSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93451C6E29E1DDE600A389DA /* AirportSearchViewModel.swift */; };
 		93451C7129E1E44800A389DA /* Airports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93451C7029E1E44800A389DA /* Airports.swift */; };
 		93451C7429E349F100A389DA /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93451C7329E349F100A389DA /* HomeScreenViewController.swift */; };
@@ -26,6 +28,7 @@
 		936276C929E5BF2900795365 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 936276C829E5BF2800795365 /* GoogleService-Info.plist */; };
 		936276CC29E5C86800795365 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936276CB29E5C86800795365 /* ProfileViewController.swift */; };
 		936276CE29E5E5D300795365 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936276CD29E5E5D300795365 /* PostTableViewCell.swift */; };
+		936D843329E727190063D316 /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 936D843229E727190063D316 /* LogIn.storyboard */; };
 		93B750BF29D4914400FFFE96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B750BE29D4914400FFFE96 /* AppDelegate.swift */; };
 		93B750C129D4914400FFFE96 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B750C029D4914400FFFE96 /* SceneDelegate.swift */; };
 		93B750C829D4914600FFFE96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B750C729D4914600FFFE96 /* Assets.xcassets */; };
@@ -37,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		933DCB2829E7695100BB5768 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		933DCB2A29E8483300BB5768 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		93451C6E29E1DDE600A389DA /* AirportSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportSearchViewModel.swift; sourceTree = "<group>"; };
 		93451C7029E1E44800A389DA /* Airports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airports.swift; sourceTree = "<group>"; };
 		93451C7329E349F100A389DA /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +59,7 @@
 		936276C829E5BF2800795365 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		936276CB29E5C86800795365 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		936276CD29E5E5D300795365 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		936D843229E727190063D316 /* LogIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LogIn.storyboard; path = "TerminalTalksApp/UI Views/LogIn.storyboard"; sourceTree = SOURCE_ROOT; };
 		93B750BB29D4914400FFFE96 /* TerminalTalksApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerminalTalksApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B750BE29D4914400FFFE96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B750C029D4914400FFFE96 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		933DCB2729E7693300BB5768 /* Camera ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				933DCB2829E7695100BB5768 /* CameraViewController.swift */,
+			);
+			path = "Camera ViewController";
+			sourceTree = "<group>";
+		};
 		93451C7229E349B100A389DA /* HomeScreenVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +128,7 @@
 				934CFB5229DB359E00886B39 /* LogIn VC */,
 				934CFB5629DB457900886B39 /* Airport Search VC */,
 				93451C7229E349B100A389DA /* HomeScreenVC */,
+				933DCB2729E7693300BB5768 /* Camera ViewController */,
 			);
 			path = "UI Views";
 			sourceTree = "<group>";
@@ -131,6 +146,8 @@
 		934CFB5229DB359E00886B39 /* LogIn VC */ = {
 			isa = PBXGroup;
 			children = (
+				936D843229E727190063D316 /* LogIn.storyboard */,
+				933DCB2A29E8483300BB5768 /* MainScreenViewController.swift */,
 				934CFB5329DB35BE00886B39 /* LogInViewController.swift */,
 				93451C7529E352BA00A389DA /* LogInViewModel.swift */,
 			);
@@ -293,6 +310,7 @@
 				93DDC17B29D743D30023754A /* Main.storyboard in Resources */,
 				936276C929E5BF2900795365 /* GoogleService-Info.plist in Resources */,
 				93B750CB29D4914600FFFE96 /* LaunchScreen.storyboard in Resources */,
+				936D843329E727190063D316 /* LogIn.storyboard in Resources */,
 				93B750C829D4914600FFFE96 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +332,7 @@
 				936276CC29E5C86800795365 /* ProfileViewController.swift in Sources */,
 				934CFB5429DB35BE00886B39 /* LogInViewController.swift in Sources */,
 				93B750BF29D4914400FFFE96 /* AppDelegate.swift in Sources */,
+				933DCB2B29E8483300BB5768 /* MainScreenViewController.swift in Sources */,
 				934CFB6229DB6CFA00886B39 /* CreateProfileViewModel.swift in Sources */,
 				934CFB6D29DCA1CA00886B39 /* FirebaseService.swift in Sources */,
 				93B750C129D4914400FFFE96 /* SceneDelegate.swift in Sources */,
@@ -321,6 +340,7 @@
 				934CFB6929DC875300886B39 /* Profile.swift in Sources */,
 				934CFB5A29DB497D00886B39 /* AirportSearchTableViewController.swift in Sources */,
 				93451C7429E349F100A389DA /* HomeScreenViewController.swift in Sources */,
+				933DCB2929E7695100BB5768 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +479,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GSQU7BHG9R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TerminalTalksApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -486,6 +507,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GSQU7BHG9R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TerminalTalksApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

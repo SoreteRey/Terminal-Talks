@@ -24,11 +24,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         handle = Auth.auth().addStateDidChangeListener{ auth, user in
             if Auth.auth().currentUser != nil {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let navigation = storyboard.instantiateViewController(withIdentifier: "LogIn")
+                let navigation = storyboard.instantiateViewController(withIdentifier: "TabBarController")
                 self.window?.rootViewController = navigation
                 
             } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let storyboard = UIStoryboard(name: "LogIn", bundle: nil)
                 let navigation = storyboard.instantiateViewController(withIdentifier: "MainScreen")
                 self.window?.rootViewController = navigation
             }

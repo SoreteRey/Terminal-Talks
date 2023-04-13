@@ -24,6 +24,7 @@ class AirportSearchTableViewController: UITableViewController {
     // MARK: - Properties
     var airports: [Airport]?
     var filteredAirports: [Airport]?
+    weak var delegate: SearchCellTableViewCellDelegate?
     
     // MARK: - Functions
     func fetchingInformation(searchTerm: String) { //O(n), where n is the length of the sequence.
@@ -56,17 +57,20 @@ class AirportSearchTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "airportCell", for: indexPath)
-        guard let airport = filteredAirports?[indexPath.row] else { return UITableViewCell() }
-        
-        var config = cell.defaultContentConfiguration()
-        config.text = airport.name
-        config.secondaryText = airport.city
-        cell.contentConfiguration = config
-        
+        // TODO - MVVM this.
+        guard let airport = filteredAirports?[indexPath.row] else {
+            return cell
+        }
+        cell.textLabel?.text = airport.name
+        cell.detailTextLabel?.text = "\(airport.city)"
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        let airportName = cell?.textLabel?.text ?? "No airport, nerd."
+        delegate?.airportSelected(with: airportName)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 // MARK: - Extension
@@ -78,5 +82,4 @@ extension AirportSearchTableViewController: UISearchBarDelegate {
         self.tableView.reloadData()
     }
 }
-
 

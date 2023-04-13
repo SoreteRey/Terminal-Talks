@@ -7,12 +7,20 @@
 
 import UIKit
 
+protocol SearchCellTableViewCellDelegate: AnyObject {
+    func airportSelected(with name: String)
+}
+
 class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    // MARK: - Outlets
     @IBOutlet var PostTableView: UITableView!
+    @IBOutlet weak var showAirportLabel: UILabel!
     
+    // MARK: - Properties
     var models = [SkySocialPost]()
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         PostTableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
@@ -23,6 +31,15 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         models.append(SkySocialPost(peopleOnTheirWay: 5, username: "Scotty", userImageName: "head2", postImageName: "post2"))
         models.append(SkySocialPost(peopleOnTheirWay: 0, username: "Chase", userImageName: "head", postImageName: "post3"))
         models.append(SkySocialPost(peopleOnTheirWay: 0, username: "Orco", userImageName: "head2", postImageName: "head2"))
+        models.append(SkySocialPost(peopleOnTheirWay: 2, username: "SeaBass", userImageName: "head", postImageName: "post1"))
+        models.append(SkySocialPost(peopleOnTheirWay: 5, username: "Scotty", userImageName: "head2", postImageName: "post2"))
+        models.append(SkySocialPost(peopleOnTheirWay: 0, username: "Chase", userImageName: "head", postImageName: "post3"))
+        models.append(SkySocialPost(peopleOnTheirWay: 0, username: "Orco", userImageName: "head2", postImageName: "head2"))
+        models.append(SkySocialPost(peopleOnTheirWay: 2, username: "SeaBass", userImageName: "head", postImageName: "post1"))
+        models.append(SkySocialPost(peopleOnTheirWay: 5, username: "Scotty", userImageName: "head2", postImageName: "post2"))
+        models.append(SkySocialPost(peopleOnTheirWay: 0, username: "Chase", userImageName: "head", postImageName: "post3"))
+        models.append(SkySocialPost(peopleOnTheirWay: 0, username: "Orco", userImageName: "head2", postImageName: "head2"))
+    
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,12 +53,29 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 0 + 0 + view.frame.size.width
+        return 500
+// 0 + -50 + view.frame.size.width
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSearchTBVC" {
+            guard let destination = segue.destination as? AirportSearchTableViewController else {return}
+            destination.delegate = self
+        }
+    }
+}
+extension HomeScreenViewController: SearchCellTableViewCellDelegate {
+    func airportSelected(with name: String) {
+         showAirportLabel.text = name
+        
+        
+    }
+    
+    
 }
 
 struct SkySocialPost {
